@@ -20,9 +20,9 @@ const Navbar = () => {
             <div className="flex justify-between items-center px-5 py-2">
                 <SignInModal isOpen={inOpen} onClose={handleInClick} title="Sign In" />
                 <SignInModal isOpen={upOpen} onClose={handleUpClick} title="Sign Up" />
-                <div className="flex gap-5 px-2 py-1 items-center border border-gray-700 rounded-lg">
+                <div className="flex w-[50vw] gap-5 px-2 py-1 items-center border border-gray-700 rounded-lg">
                     <SearchIcon color="black" />
-                    <input type="text" className="w-[50vw] outline-none" placeholder="Search markets" />
+                    <input type="text" className="w-full outline-none" placeholder="Search markets" />
                 </div>
                 <div className="flex gap-6 items-center">
                     <div className="flex gap-2">
@@ -35,9 +35,10 @@ const Navbar = () => {
                     </div>
                 </div>
             </div>
+            {/* Navigates */}
             <div className="flex gap-3">
                 {
-                    content.filterBtns.map((item, index) => <Button key={index} text={item.text} value={item.value} onClick={() => { }} className="px-2 py-1 border-b-2 border-white hover:border-b-gray-500 focus:border-b-black rounded-sm" icon />)
+                    content.menuBtns.map((item, index) => <Button key={index} text={item.text} value={item.value} onClick={() => { }} className="px-2 py-1 border-b-2 border-white hover:border-b-gray-500 focus:border-b-black rounded-sm" icon />)
                 }
             </div>
         </div>

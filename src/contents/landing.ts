@@ -23,42 +23,140 @@ export const content = {
             icon: RankIcon
         }
     ],
-    filterBtns:[
+    menuBtns: [
         {
             text: "All",
             value: "all"
         },
         {
-            text:"New",
-            value:"new"
+            text: "New",
+            value: "new"
         },
         {
-            text:"Politics",
-            value:"politics"
+            text: "Politics",
+            value: "politics"
         },
         {
-            text:"Olympics",
-            value:"olympics"
+            text: "Olympics",
+            value: "olympics"
         },
         {
-            text:"Crypto",
-            value:"crypto"
+            text: "Crypto",
+            value: "crypto"
         },
         {
-            text:"Pop Culture",
-            value:"pop culture"
+            text: "Pop Culture",
+            value: "popCulture"
         },
         {
-            text:"Sports",
-            value:"sports"
+            text: "Sports",
+            value: "sports"
         },
         {
-            text:"Business",
-            value:"business"
+            text: "Business",
+            value: "business"
         },
         {
-            text:"Science",
-            value:"science"
+            text: "Science",
+            value: "science"
         }
-    ]
+    ],
+    filterBtns: {
+        all: [
+            {
+                text: "New",
+                value: "new"
+            },
+            {
+                text: "US Election",
+                value: "uselection"
+            },
+            {
+                text: "Kamala",
+                value: "kamala"
+            },
+            {
+                text: "Swing States",
+                value: "swingstates"
+            },
+            {
+                text: "Lebanon",
+                value: "lebanon"
+            },
+            {
+                text: "Crypto Prices",
+                value: "cryptoPrices"
+            },
+            {
+                text: "Movies",
+                value: "movies"
+            }
+        ],
+        new: [
+            {
+                text: "New",
+                value: "new"
+            },
+            {
+                text: "US Election",
+                value: "uselection"
+            },
+            {
+                text: "Kamala",
+                value: "kamala"
+            },
+            {
+                text: "Swing States",
+                value: "swingstates"
+            },
+            {
+                text: "Lebanon",
+                value: "lebanon"
+            },
+            {
+                text: "Crypto Prices",
+                value: "cryptoPrices"
+            },
+            {
+                text: "Movies",
+                value: "movies"
+            }
+        ],
+        politics: [
+            {
+                text: "Lebanon",
+                value: "lebanon"
+            },
+            {
+                text: "China",
+                value: "china"
+            },
+            {
+                text: "Fed Rales",
+                value: "fedRales"
+            },
+            {
+                text: "Middle East",
+                value: "middleEast"
+            }
+        ],
+        olympics: [
+
+        ],
+        crypto: [
+
+        ],
+        popCulture: [
+
+        ],
+        sports: [
+
+        ],
+        business: [
+
+        ],
+        science: [
+
+        ]
+    }
 }
