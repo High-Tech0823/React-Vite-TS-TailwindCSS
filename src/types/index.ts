@@ -52,3 +52,8 @@ export type JWTContextType = {
     resetPassword: (email: string) => Promise<void>;
     updateProfile: VoidFunction;
   };
+
+//   Notification context
+ export interface NotificationContextValue {
+    showNotification: (msg: string, type: "success" | "error" | "info" | "warning") => void;
+}

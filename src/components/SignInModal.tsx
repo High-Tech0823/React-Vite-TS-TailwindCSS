@@ -2,8 +2,11 @@ import React, { useState } from "react";
 import instance from "../utils/axios";
 import { ModalProps } from "../types";
 import { GoogleIcon } from "./icons";
+import useNotification from "../hooks/useNotification";
 
 const SignInModal = ({ isOpen, onClose, title }: ModalProps) => {
+    const { showNotification } = useNotification();
+
     const [userData, setUserData] = useState({
         firstName: "",
         lastName: "",
@@ -23,6 +26,7 @@ const SignInModal = ({ isOpen, onClose, title }: ModalProps) => {
                 .then((res) => {
                     if (res.status === 200) {
                         localStorage.setItem("token", res.data.token)
+                        showNotification("Successfully Logined", "success")
                     }
                 }).catch((error) => console.log(error))
             onClose()
