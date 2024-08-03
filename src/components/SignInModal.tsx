@@ -2,10 +2,12 @@ import React, { useState } from "react";
 import instance from "../utils/axios";
 import { ModalProps } from "../types";
 import { GoogleIcon } from "./icons";
-import useNotification from "../hooks/useNotification";
+import useAuth from "../hooks/useAuth";
+
 
 const SignInModal = ({ isOpen, onClose, title }: ModalProps) => {
-    const { showNotification } = useNotification();
+
+    const { login, register, isLoggedIn } = useAuth()
 
     const [userData, setUserData] = useState({
         firstName: "",
@@ -22,17 +24,14 @@ const SignInModal = ({ isOpen, onClose, title }: ModalProps) => {
     };
     const handleClick = () => {
         if (title == "Sign In") {
-            instance.post("/auth/login", userData)
-                .then((res) => {
-                    if (res.status === 200) {
-                        localStorage.setItem("token", res.data.token)
-                        showNotification("Successfully Logined", "success")
-                    }
-                }).catch((error) => console.log(error))
+            if (!isLoggedIn) {
+                login(userData.email, userData.password)
+            }
             onClose()
         } else {
-            instance.post("/auth/register", userData)
-                .then().catch((error) => console.log(error))
+            register(userData.email, userData.password, userData.firstName, userData.lastName)
+            // instance.post("/auth/register", userData)
+            //     .then().catch((error) => console.log(error))
             onClose()
         }
     }

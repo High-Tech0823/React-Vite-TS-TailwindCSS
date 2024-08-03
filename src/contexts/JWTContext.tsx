@@ -21,22 +21,22 @@ const initialState: AuthProps = {
 };
 
 
-const verifyToken: (st: string) => boolean = (serviceToken) => {
-    if (!serviceToken) {
+const verifyToken: (st: string) => boolean = (token) => {
+    if (!token) {
         return false
     }
-    const decoded: KeyedObject = jwtDecode(serviceToken);
+    const decoded: KeyedObject = jwtDecode(token);
 
     return decoded.exp > Date.now() / 1000;
 }
 
 
-const setSession = (serviceToken?: string | null) => {
-    if (serviceToken) {
-        localStorage.setItem('serviceToken', serviceToken);
-        instance.defaults.headers.common.Authorization = `Bearer ${serviceToken}`;
+const setSession = (token?: string | null) => {
+    if (token) {
+        localStorage.setItem('token', token);
+        instance.defaults.headers.common.Authorization = `Bearer ${token}`;
     } else {
-        localStorage.removeItem('serviceToken');
+        localStorage.removeItem('token');
         delete instance.defaults.headers.common.Authorization;
     }
 }
@@ -51,11 +51,13 @@ export const JWTProvider = ({ children }: { children: React.ReactElement }) => {
     useEffect(() => {
         const init = async () => {
             try {
-                const serviceToken = window.localStorage.getItem('serviceToken');
-                if (serviceToken && verifyToken(serviceToken)) {
-                    setSession(serviceToken);
+                const token = window.localStorage.getItem('token');
+                if (token && verifyToken(token)) {
+                    setSession(token);
                     const response = await instance.get('/auth/me');
                     const { user } = response.data;
+                    console.log(user);
+
                     dispatch({
                         type: LOGIN,
                         payload: {
@@ -80,8 +82,8 @@ export const JWTProvider = ({ children }: { children: React.ReactElement }) => {
     }, []);
     const login = async (email: string, password: string) => {
         const response = await instance.post('/auth/login', { email, password });
-        const { serviceToken, user } = response.data;
-        setSession(serviceToken);
+        const { token, user } = response.data;
+        setSession(token);
         dispatch({
             type: LOGIN,
             payload: {
