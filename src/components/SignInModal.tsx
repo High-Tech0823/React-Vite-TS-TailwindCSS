@@ -3,10 +3,11 @@ import instance from "../utils/axios";
 import { ModalProps } from "../types";
 import { GoogleIcon } from "./icons";
 import useAuth from "../hooks/useAuth";
+import useNotification from "../hooks/useNotification";
 
 
 const SignInModal = ({ isOpen, onClose, title }: ModalProps) => {
-
+    const { showNotification } = useNotification()
     const { login, register, isLoggedIn } = useAuth()
 
     const [userData, setUserData] = useState({
@@ -15,7 +16,6 @@ const SignInModal = ({ isOpen, onClose, title }: ModalProps) => {
         email: "",
         password: ""
     })
-    console.log(userData);
 
     if (!isOpen) return null;
     const handleModalClick = (event: React.MouseEvent<HTMLDivElement>) => {
@@ -26,6 +26,7 @@ const SignInModal = ({ isOpen, onClose, title }: ModalProps) => {
         if (title == "Sign In") {
             if (!isLoggedIn) {
                 login(userData.email, userData.password)
+                showNotification("Successfully logined!", "success")
             }
             onClose()
         } else {
