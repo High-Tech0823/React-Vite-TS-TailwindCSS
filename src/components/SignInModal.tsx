@@ -6,6 +6,7 @@ import useAuth from "../hooks/useAuth";
 import useNotification from "../hooks/useNotification";
 
 
+
 const SignInModal = ({ isOpen, onClose, title }: ModalProps) => {
     const { showNotification } = useNotification()
     const { login, register, isLoggedIn } = useAuth()
@@ -27,6 +28,7 @@ const SignInModal = ({ isOpen, onClose, title }: ModalProps) => {
             if (!isLoggedIn) {
                 login(userData.email, userData.password)
                 showNotification("Successfully logined!", "success")
+
             }
             onClose()
         } else {
