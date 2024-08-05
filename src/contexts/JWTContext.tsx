@@ -9,7 +9,6 @@ import authReducer from '../store/reducers/auth';
 import instance from "../utils/axios";
 import { AuthProps, JWTContextType, KeyedObject } from "../types";
 import { createContext, useEffect, useReducer } from 'react';
-import useNotification from '../hooks/useNotification';
 
 
 const chance = new Chance();
@@ -21,7 +20,10 @@ const initialState: AuthProps = {
     user: null
 };
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 82b24907f11d1b6f12eb10b086232d46dceb0119
 const verifyToken: (st: string) => boolean = (token) => {
     if (!token) {
         return false
@@ -56,7 +58,6 @@ export const JWTProvider = ({ children }: { children: React.ReactElement }) => {
                 if (token && verifyToken(token)) {
                     setSession(token);
                     const response = await instance.get('/users/me');
-
                     const { user } = response.data;
                     dispatch({
                         type: LOGIN,
