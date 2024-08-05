@@ -58,8 +58,6 @@ export const JWTProvider = ({ children }: { children: React.ReactElement }) => {
                     const response = await instance.get('/users/me');
 
                     const { user } = response.data;
-                    console.log(user);
-
                     dispatch({
                         type: LOGIN,
                         payload: {

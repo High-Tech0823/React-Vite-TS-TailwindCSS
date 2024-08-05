@@ -23,8 +23,6 @@ const users = createSlice({
     },
 });
 
-// export const { hasError, getUserData } = usersSlice.actions;
-
 // Export the reducer as a named export
 export default users.reducer;
 
