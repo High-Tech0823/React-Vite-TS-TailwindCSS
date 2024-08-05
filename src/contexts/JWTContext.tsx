@@ -20,10 +20,6 @@ const initialState: AuthProps = {
     user: null
 };
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 82b24907f11d1b6f12eb10b086232d46dceb0119
 const verifyToken: (st: string) => boolean = (token) => {
     if (!token) {
         return false
