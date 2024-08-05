@@ -37,17 +37,19 @@ export interface EventProps {
     subcontent: SubContentProps[],
 }
 // Auth types
-export type UserProfile = {
-    id?: string,
+export interface UserProfileProps {
+    id?: number,
     email?: string,
     avatar?: string,
-    name?: string,
+    fistName: string,
+    lastName: string,
+    password: string,
     role?: string,
 }
 export interface AuthProps {
     isLoggedIn: boolean,
     isInitialized?: boolean,
-    user?: UserProfile | null,
+    user?: UserProfileProps | null,
     token?: string | null
 }
 
@@ -59,7 +61,7 @@ export interface AuthActionProps {
 export type JWTContextType = {
     isLoggedIn: boolean;
     isInitialized?: boolean;
-    user?: UserProfile | null | undefined;
+    user?: UserProfileProps | null | undefined;
     logout: () => void;
     login: (email: string, password: string) => Promise<void>;
     register: (email: string, password: string, firstName: string, lastName: string) => Promise<void>;
