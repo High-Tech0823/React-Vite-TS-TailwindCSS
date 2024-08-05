@@ -22,7 +22,6 @@ const initialState: AuthProps = {
 };
 
 
-
 const verifyToken: (st: string) => boolean = (token) => {
     if (!token) {
         return false
@@ -57,6 +56,7 @@ export const JWTProvider = ({ children }: { children: React.ReactElement }) => {
                 if (token && verifyToken(token)) {
                     setSession(token);
                     const response = await instance.get('/users/me');
+
                     const { user } = response.data;
                     console.log(user);
 
